@@ -2,8 +2,8 @@
 
 Building it:
 
-    docker build . -t better
+    docker build . -t better-hello-world
 
-Running it:
+Running it (the **`-t`** flag is hugely important 😎):
 
-    docker run better
+    docker run -it better-hello-world

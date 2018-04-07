@@ -1,15 +1,7 @@
-FROM ubuntu:latest
+FROM python:3-alpine
 MAINTAINER tcurvelo@gmail.com
 
-RUN apt-get update && \
-    apt-get install -y \
-      mplayer \
-      caca-utils \
-      ;
+RUN pip install asciinema
+COPY video.cast /tmp/video.cast
 
-COPY video.webm /tmp/video.webm
-
-ENV CACA_DRIVER ncurses
-ENV TERM xterm
-
-CMD mplayer -quiet -ao null -vo caca /tmp/video.webm
+ENTRYPOINT /usr/local/bin/asciinema play /tmp/video.cast
